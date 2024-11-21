@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model } from "mongoose";
 
 const bikeSchema = new mongoose.Schema({
     name: {
@@ -41,4 +41,4 @@ const bikeSchema = new mongoose.Schema({
     timestamps: true // Automatically add createdAt and updatedAt timestamps
 });
 
-export default bikeSchema;
+export const BikeModel = model<Bike>('Bike',bikeSchema)
