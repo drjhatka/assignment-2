@@ -106,7 +106,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,
-    "include": ["src/app"], // which files to compile
-    "exclude": ["node_modules"] // which files to skip                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "include": ["src/app"], // which files to compile
+  "exclude": ["node_modules"] // which files to skip                                 /* Skip type checking all .d.ts files. */
 }
