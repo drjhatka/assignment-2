@@ -1,5 +1,6 @@
 import mongoose, { model } from "mongoose";
 
+//create bike schema...
 const bikeSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -41,4 +42,5 @@ const bikeSchema = new mongoose.Schema({
     timestamps: true // Automatically add createdAt and updatedAt timestamps
 });
 
+// create and export model from the schema...
 export const BikeModel = model<Bike>('Bike',bikeSchema)
