@@ -13,7 +13,7 @@ app.use(cors())
 app.use('/', BikeRoutes.router) //use the bike routes defined in the bike router
 
 
-//use middleware
+//use middleware for invalid routes...
 app.use(notFoundHandler)
 
 export default app;
