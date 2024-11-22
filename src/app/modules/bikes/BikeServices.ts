@@ -5,12 +5,11 @@ import { BikeModel } from './BikeSchema';
 //start with GPUD order...
 
 const create = async (bike: Bike) => { return await BikeModel.create(bike) }
-const getOne = async (Id: string) => {
-    console.log(Id)
-    return await BikeModel.find({ _id: new mongoose.Types.ObjectId(Id) })
-}
+
+const getOne = async (Id: string) => {return await BikeModel.find({ _id: new mongoose.Types.ObjectId(Id) })}
+
 const getAll = async (searchTerm: string) => {
-    // Build a search condition
+    // build a search condition...
     let filter = {};
     let result = null;
     if (searchTerm) {

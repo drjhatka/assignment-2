@@ -5,6 +5,7 @@ import { ZodError } from "zod";
 
 
 
+
 const createBike = async (req: Request, res: Response) => {
     try {
         console.log('post hit')
@@ -13,13 +14,13 @@ const createBike = async (req: Request, res: Response) => {
         //save into database
         const result = await BikeServices.create(bike)
         res.status(200).json({
-            success:true,
-            message:"Bike Created Successfully",
-            data:document
+            success: true,
+            message: "Bike Created Successfully",
+            data: document
         })
     } catch (error) {
         if (error instanceof ZodError) {
-            res.send({errors:error.issues, stackTrace:error.stack})
+            res.send({ errors: error.issues, stackTrace: error.stack })
         }
         console.log(error)
 
@@ -29,27 +30,29 @@ const getABike = async (req: Request, res: Response) => {
     try {
         const id: string = req.params.productId
         const result = await BikeServices.getOne(id)
-        res.json({
-            success: true,
-            data: result
-        })
+        if (result?.length != 0) {
+            res.status(200).json({
+                message: "Bike Retrieved Successfully",
+                status: true,
+                data: result
+            })
+        }
     } catch (error) {
-        res.json({ success: false, message: "Something went wrong" })
-        console.log(error)
+        res.json({ message: "Bike not available", success: false, error:error })
     }
 }
 const getAllBikes = async (req: Request, res: Response) => {
     try {
         console.log(req.query.searchTerm)
         const result = await BikeServices.getAll(req.query.searchTerm as string)
-        if(result?.length!=0){
+        if (result?.length != 0) {
             res.status(200).json({
-                message:"Bike Retrieved Successfully",
-                status:true,
-                data:result
+                message: "Bike Retrieved Successfully",
+                status: true,
+                data: result
             })
         }
-        res.json({ success:false, message:"Bike not available" })
+        res.json({ success: false, message: "Bike(s) not available" })
     } catch (error) {
         console.log(error)
     }
