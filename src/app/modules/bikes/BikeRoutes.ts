@@ -10,3 +10,5 @@ router.get('/api/products/:productId', BikeController.getABike)
 router.post('/api/products', BikeController.createBike)
 router.put('/api/products/:productId', BikeController.updateABike)
 router.delete('/api/products/:productId', BikeController.deleteABike)
+
+export const BikeRoutes = {router};

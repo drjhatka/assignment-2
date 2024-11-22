@@ -26,7 +26,9 @@ const getABike = async (req: Request, res: Response) => {
 }
 const getAllBikes = async (req: Request, res: Response) => {
     try {
-        return await BikeServices.getAll()
+        const result = await BikeServices.getAll()
+        console.log(result)
+        res.json({success:true, data:result})
     } catch (error) {
         console.log(error)
     }
