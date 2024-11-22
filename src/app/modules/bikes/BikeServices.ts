@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Error } from 'mongoose';
 import { BikeModel } from './BikeSchema';
 //define CRUD operations on the bikes (products) here
 
@@ -6,7 +6,7 @@ import { BikeModel } from './BikeSchema';
 
 const create = async (bike: Bike) => { return await BikeModel.create(bike) }
 
-const getOne = async (Id: string) => {return await BikeModel.find({ _id: new mongoose.Types.ObjectId(Id) })}
+const getOne = async (Id: string) => { return await BikeModel.find({ _id: new mongoose.Types.ObjectId(Id) }) }
 
 const getAll = async (searchTerm: string) => {
     // build a search condition...
@@ -21,7 +21,17 @@ const getAll = async (searchTerm: string) => {
     }
     return result
 }
-const updateOne = async () => { return { success: true } }
+const updateOne = async (productId: string, updatedDoc:Bike) => {
+    try{
+        const result = await BikeModel.updateOne({ _id: new mongoose.Types.ObjectId(productId) }, {
+            $set: updatedDoc // using bike interface type on updatedDoc doesn't allow extra fields to be added, but still shows a false flag of modified count
+        })
+        if(result.modifiedCount===1 && result.matchedCount===1){return true}
+        return false
+    }catch(err){
+        console.log('error', err)
+    }
+}
 const deleteOne = async () => { return { success: true } }
 
 export const BikeServices = {
