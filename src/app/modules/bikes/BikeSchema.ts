@@ -38,7 +38,8 @@ const bikeSchema = new mongoose.Schema({
         required: true,
         default:true
     }
-});
+}, { timestamps: true }
+);
 
 // create and export model from the schema...
 export const BikeModel = model<Bike>('Bike',bikeSchema)

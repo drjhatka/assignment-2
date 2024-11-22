@@ -4,16 +4,28 @@ import { BikeModel } from './BikeSchema';
 
 //start with GPUD order...
 
-const create=async (bike:Bike)=>{return await BikeModel.create(bike)}
-const getOne = async(Id:string)=>{
+const create = async (bike: Bike) => { return await BikeModel.create(bike) }
+const getOne = async (Id: string) => {
     console.log(Id)
-    return await BikeModel.find({_id: new mongoose.Types.ObjectId(Id)})
+    return await BikeModel.find({ _id: new mongoose.Types.ObjectId(Id) })
 }
-const getAll = async ()=>{return await BikeModel.find()}
-const updateOne = async ()=>{return {success:true}}
-const deleteOne = async ()=>{return {success:true}}
+const getAll = async (searchTerm: string) => {
+    // Build a search condition
+    let filter = {};
+    let result = null;
+    if (searchTerm) {
+        const regex = new RegExp(searchTerm, 'i'); // Case-insensitive search
+        filter = {
+            $or: [{ name: regex }, { brand: regex }, { category: regex }]
+        };
+        result = await BikeModel.find(filter)
+    }
+    return result
+}
+const updateOne = async () => { return { success: true } }
+const deleteOne = async () => { return { success: true } }
 
-export const BikeServices ={
+export const BikeServices = {
     create,
     getOne,
     getAll,
