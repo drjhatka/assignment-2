@@ -5,7 +5,7 @@ import { BikeController } from './BikeController';
 const router = express.Router();
 
 //define bike CRUD routes...
-//router.get('/api/products', BikeController.getAllBikes)
+router.get('/api/products', BikeController.getAllBikes)
 router.get('/api/products/:productId', BikeController.getABike)
 router.post('/api/products', BikeController.createBike)
 router.put('/api/products/:productId', BikeController.updateABike)
