@@ -26,13 +26,19 @@ const updateOne = async (productId: string, updatedDoc:Bike) => {
         const result = await BikeModel.updateOne({ _id: new mongoose.Types.ObjectId(productId) }, {
             $set: updatedDoc // using bike interface type on updatedDoc doesn't allow extra fields to be added, but still shows a false flag of modified count
         })
-        if(result.modifiedCount===1 && result.matchedCount===1){return true}
+        if(await result.modifiedCount===1 && result.matchedCount===1){return true}
         return false
     }catch(err){
         console.log('error', err)
     }
 }
-const deleteOne = async () => { return { success: true } }
+const deleteOne = async (productId:string) => { 
+    const result = BikeModel.deleteOne({_id: new mongoose.Types.ObjectId(productId)})
+    if((await result).deletedCount==1){
+        return true
+    }
+    return false
+ }
 
 export const BikeServices = {
     create,

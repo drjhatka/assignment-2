@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 
 const createBike = async (req: Request, res: Response) => {
     try {
-        const {bike} = req.body     // assuming the object has a bike element which includes the bike object
+        const { bike } = req.body     // assuming the object has a bike element which includes the bike object
         ZodBikeSchema.parse(bike) // use validate for joi and parse for zod library.
         //save into database
         const result = await BikeServices.create(bike)
@@ -38,15 +38,15 @@ const getABike = async (req: Request, res: Response) => {
             })
         }
     } catch (error) {
-        res.json({ message: "Bike not available", success: false, error:error })
+        res.json({ message: "Bike not available", success: false, error: error })
     }
 }
 const getAllBikes = async (req: Request, res: Response) => {
     try {
-        if(!req.query.searchTerm){
+        if (!req.query.searchTerm) {
             res.json({
-                status:false,
-                message:"Search Term is Required!"
+                status: false,
+                message: "Search Term is Required!"
             })
         }
         const result = await BikeServices.getAll(req.query.searchTerm as string)
@@ -57,7 +57,7 @@ const getAllBikes = async (req: Request, res: Response) => {
                 data: result
             })
         }
-        else{ //check if the result returns an empty array...
+        else { //check if the result returns an empty array...
             res.json({ success: false, message: "Bike(s) not available" })
         }
     } catch (error) {
@@ -67,29 +67,32 @@ const getAllBikes = async (req: Request, res: Response) => {
 const updateABike = async (req: Request, res: Response) => {
     try {
         console.log(req.body)
-        const productId:string =    req.params.productId
+        const productId: string = req.params.productId
         const modifiedCount = await BikeServices.updateOne(productId, req.body)
-        if(modifiedCount){
+        if (modifiedCount && Object.keys(req.body).length > 0) {
             res.status(200).json({
                 message: "Bike updated successfully",
-                modified:true,
-                data:BikeServices.getOne(productId),
-                changedFields:req.body
+                modified: true,
+                data: await BikeServices.getOne(productId),
+                changedFields: req.body
             })
         }
-        else{
-            res.json({message:"Bike not found for update", modified: false })
-
+        else {
+            res.json({ message: "Bike not found for update", modified: false })
         }
-
     } catch (error) {
         console.log(error)
     }
 }
 const deleteABike = async (req: Request, res: Response) => {
     try {
-        //const result= await BikeServices.getAll()
-        //res.json({success:true, data:result})
+        const productId = req.params.productId;
+        const deleted = await BikeServices.deleteOne(productId)
+        if (deleted) {
+            res.json({ message: "Product Deleted Successfully", success: true, data: {} })
+        }
+        res.json({ success: false, message: "Unable to Delete Check Product ID Again" })
+
     } catch (error) {
         console.log(error)
     }
@@ -101,5 +104,4 @@ export const BikeController = {
     getAllBikes,
     updateABike,
     deleteABike
-
 }
