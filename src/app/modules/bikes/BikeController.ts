@@ -2,10 +2,6 @@ import { Request, Response } from "express";
 import ZodBikeSchema from "../validators/ZodBikeSchema";
 import { BikeServices } from "./BikeServices";
 import { ZodError } from "zod";
-import mongoose from 'mongoose';
-
-
-
 
 const createBike = async (req: Request, res: Response) => {
     try {
@@ -38,7 +34,7 @@ const getABike = async (req: Request, res: Response) => {
             })
         }
     } catch (error) {
-        res.json({ message: "Bike not available", success: false, error: error })
+        res.status(404).json({ message: "Bike not available", success: false, error: error })
     }
 }
 const getAllBikes = async (req: Request, res: Response) => {
@@ -78,7 +74,7 @@ const updateABike = async (req: Request, res: Response) => {
             })
         }
         else {
-            res.json({ message: "Bike not found for update", modified: false })
+            res.status(404).json({ message: "Bike not found for update", modified: false })
         }
     } catch (error) {
         console.log(error)
@@ -91,7 +87,7 @@ const deleteABike = async (req: Request, res: Response) => {
         if (deleted) {
             res.json({ message: "Product Deleted Successfully", success: true, data: {} })
         }
-        res.json({ success: false, message: "Unable to Delete Check Product ID Again" })
+        res.status(404).json({ success: false, message: "Unable to Delete Check Product ID Again" })
 
     } catch (error) {
         console.log(error)
