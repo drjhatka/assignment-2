@@ -2,9 +2,9 @@ import mongoose, { model } from "mongoose";
 
 //create bike schema...
 const bikeSchema = new mongoose.Schema({
-    _id:{
-        type:String
-    },
+    // _id:{
+    //     type:String
+    // },
     name: {
         type: String,
         required: true,

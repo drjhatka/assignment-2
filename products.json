@@ -1,6 +1,6 @@
 [
   {
-    "_id": "673fec437bd216ac4e1b807c",
+    "_id": { "$oid": "673fec437bd216ac4e1b807c" },
     "name": "ClimbMaster C5",
     "brand": "PeakPerformance",
     "price": 1100,
@@ -12,7 +12,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b807d",
+    "_id": { "$oid": "673fec437bd216ac4e1b807d" },
     "name": "Trailblazer 500",
     "brand": "AdventureWorks",
     "price": 1299,
@@ -24,7 +24,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b807e",
+    "_id": { "$oid": "673fec437bd216ac4e1b807e" },
     "name": "Speedster X1",
     "brand": "RoadRider",
     "price": 899,
@@ -36,7 +36,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b807f",
+    "_id": { "$oid": "673fec437bd216ac4e1b807f" },
     "name": "Urban Explorer",
     "brand": "CityCycle",
     "price": 750,
@@ -48,7 +48,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8080",
+    "_id": { "$oid": "673fec437bd216ac4e1b8080" },
     "name": "EcoRide E100",
     "brand": "GreenWheels",
     "price": 2000,
@@ -60,7 +60,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8081",
+    "_id": { "$oid": "673fec437bd216ac4e1b8081" },
     "name": "Summit Pro",
     "brand": "MountainMaster",
     "price": 1400,
@@ -72,7 +72,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8082",
+    "_id": { "$oid": "673fec437bd216ac4e1b8082" },
     "name": "Velocita V200",
     "brand": "RacePro",
     "price": 1000,
@@ -84,7 +84,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8083",
+    "_id": { "$oid": "673fec437bd216ac4e1b8083" },
     "name": "Explorer X",
     "brand": "AdventureWorks",
     "price": 1200,
@@ -96,7 +96,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8084",
+    "_id": { "$oid": "673fec437bd216ac4e1b8084" },
     "name": "Bolt E2",
     "brand": "ElectroBike",
     "price": 2400,
@@ -108,7 +108,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8085",
+    "_id": { "$oid": "673fec437bd216ac4e1b8085" },
     "name": "Pathfinder M300",
     "brand": "TrailTech",
     "price": 1300,
@@ -120,7 +120,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8086",
+    "_id": { "$oid": "673fec437bd216ac4e1b8086" },
     "name": "Turbo Trekker",
     "brand": "CityCycle",
     "price": 1600,
@@ -132,7 +132,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8087",
+    "_id": { "$oid": "673fec437bd216ac4e1b8087" },
     "name": "RoadRunner R1",
     "brand": "SpeedLine",
     "price": 850,
@@ -144,7 +144,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8088",
+    "_id": { "$oid": "673fec437bd216ac4e1b8088" },
     "name": "EcoBoost E3",
     "brand": "GreenWheels",
     "price": 2200,
@@ -156,7 +156,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b8089",
+    "_id": { "$oid": "673fec437bd216ac4e1b8089" },
     "name": "AllRounder 500",
     "brand": "FlexCycle",
     "price": 1000,
@@ -168,7 +168,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b808a",
+    "_id": { "$oid": "673fec437bd216ac4e1b808a" },
     "name": "Hiker Hybrid 300",
     "brand": "CityCycle",
     "price": 1100,
@@ -180,7 +180,7 @@
     "updatedAt": "2024-11-22T02:28:19.541+00:00"
   },
   {
-    "_id": "673fec437bd216ac4e1b808b",
+    "_id": { "$oid": "673fec437bd216ac4e1b808b" },
     "name": "ThunderTrail T4",
     "brand": "AdventureWorks",
     "price": 1500,

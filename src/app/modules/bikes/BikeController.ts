@@ -8,15 +8,14 @@ import { ZodError } from "zod";
 
 const createBike = async (req: Request, res: Response) => {
     try {
-        console.log('post hit')
-        const bike = req.body     // assuming the object has a bike element which includes the bike object
+        const {bike} = req.body     // assuming the object has a bike element which includes the bike object
         const document = ZodBikeSchema.parse(bike) // use validate for joi and parse for zod library.
         //save into database
         const result = await BikeServices.create(bike)
         res.status(200).json({
             success: true,
             message: "Bike Created Successfully",
-            data: document
+            data: result
         })
     } catch (error) {
         if (error instanceof ZodError) {
@@ -43,16 +42,23 @@ const getABike = async (req: Request, res: Response) => {
 }
 const getAllBikes = async (req: Request, res: Response) => {
     try {
-        console.log(req.query.searchTerm)
+        if(!req.query.searchTerm){
+            res.json({
+                status:false,
+                message:"Search Term is Required!"
+            })
+        }
         const result = await BikeServices.getAll(req.query.searchTerm as string)
-        if (result?.length != 0) {
+        if (result?.length != 0) { //result is not empty so bike is available
             res.status(200).json({
                 message: "Bike Retrieved Successfully",
                 status: true,
                 data: result
             })
         }
-        res.json({ success: false, message: "Bike(s) not available" })
+        else{ //check if the result returns an empty array...
+            res.json({ success: false, message: "Bike(s) not available" })
+        }
     } catch (error) {
         console.log(error)
     }
