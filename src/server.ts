@@ -1,12 +1,8 @@
-import app from "./app";
-import { configs } from "./config";
-import dotenv from 'dotenv'
 import mongoose from "mongoose";
-import path from 'path';
+import { configs } from "./app/config";
+import app from "./app";
 
-dotenv.config({ path: path.join('./' + '.env') })
-
-async function main() {
+async function serverListen () {
     try {
         await mongoose.connect(configs.dbURL as string)
         app.listen(configs.port, () => console.log(`Server is listening on port ${configs.port}`))
@@ -15,4 +11,9 @@ async function main() {
         console.log(err)
     }
 }
-export default main;
+serverListen()
+
+//export default serverListen;
+
+
+

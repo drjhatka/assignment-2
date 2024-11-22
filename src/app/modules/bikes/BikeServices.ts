@@ -1,4 +1,4 @@
-import mongoose, { Document, Error } from 'mongoose';
+import mongoose from 'mongoose';
 import { BikeModel } from './BikeSchema';
 //define CRUD operations on the bikes (products) here
 

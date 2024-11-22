@@ -12,13 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const config_1 = require("./config");
-const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const path_1 = __importDefault(require("path"));
-dotenv_1.default.config({ path: path_1.default.join('./' + '.env') });
-function main() {
+const config_1 = require("./app/config");
+const app_1 = __importDefault(require("./app"));
+//dotenv.config({ path: path.join('./' + '.env') })
+function serverListen() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield mongoose_1.default.connect(config_1.configs.dbURL);
@@ -29,4 +27,5 @@ function main() {
         }
     });
 }
-exports.default = main;
+serverListen();
+//export default serverListen;
