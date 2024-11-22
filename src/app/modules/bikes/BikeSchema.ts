@@ -38,8 +38,6 @@ const bikeSchema = new mongoose.Schema({
         required: true,
         default:true
     }
-}, {
-    timestamps: true // Automatically add createdAt and updatedAt timestamps
 });
 
 // create and export model from the schema...

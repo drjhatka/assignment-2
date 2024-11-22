@@ -4,10 +4,10 @@ import { BikeModel } from './BikeSchema';
 //start with GPUD order...
 
 const create=async (bike:Bike)=>{return await BikeModel.create(bike)}
-const getOne = async()=>{return await BikeModel.find({})}
-const getAll = async (Id:number)=>{BikeModel.find({id:Id})}
-const updateOne = async (Id:number)=>{}
-const deleteOne = async (Id:number)=>{}
+const getOne = async(Id:string)=>{return await BikeModel.find({id:Id})}
+const getAll = async ()=>{BikeModel.find({})}
+const updateOne = async (Id:string)=>{}
+const deleteOne = async (Id:string)=>{}
 
 export const BikeServices ={
     create,
