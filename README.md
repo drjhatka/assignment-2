@@ -2,19 +2,11 @@
 
 ## Overview
 
-Welcome to BikeAPI Lounge.Built with  Express js  And Mongoose this API server provides you with fake Bike API data and order data for testing purpose. There are two categories of data. the first is the product data second is the order data. bike API Lounge provides a number of useful API calls to retrieve and modify  data. Here are the links to the original Jason Data.
+Welcome to BikeAPI Lounge.Built with  Express.js  and Mongoose, this API server provides you with fake BikeAPI data and order data for testing purpose. The server provides product (Bikes) data as well as Order data. bikeAPI Lounge provides a number of useful API calls to retrieve and modify data for api testing. Following are the links to the original JSON Data Files.
 
 [Bike Data Json File](https://github.com/drjhatka/assignment-2/blob/main/products.json)
 
 [Order Data Json File](https://github.com/drjhatka/assignment-2/blob/main/orders.json)
-
-## Data Sanitization
-
-Data Sanitization We implemented the powerful Zod validation library to sanitize the post and get data, query and perimeters. If the POST data and GET query and parameter data format is correct the server returns a success message and  the original data is preserved otherwise an error message is transmitted respectively. bad data is no good.
-
-## Middleware as the request Guard on alert
-
-A number of middleware were implemented in the server to ensure data cleaning during the life cycle of a post request. For example If there are no data available for the order or bike creation Request the middleware will not allow the post request to go through the next stage and will immediately return a response stating that a request body is required.
 
 ## API description
 
@@ -44,10 +36,17 @@ This API call deletes a specified product in the database. It returns a Delete c
 
 This API call Create an order with the specified product ID.  It requires a Jason object Which represents the modified field values.This call Creates an order data in the database order collection  table With a related product ID from the product table along with the number of quantity the total price. It returns an error message If the object provided is not valid.
 
+## Data Sanitization
+
+We implemented powerful Zod validation library to sanitize the post and get data, query and perimeters. If the POST data and GET query and parameter data format is correct, the server returns a success message and  the original data is preserved otherwise an error message is transmitted respectively. bad data is no good.
+
+## Middleware as the request Guard on alert
+
+A number of middleware were implemented in the server to ensure data cleaning during the life cycle of a post request. For example If there are no data available for the order or bike creation Request the middleware will not allow the post request to go through the next stage and will immediately return a response stating that a request body is required.
+
 ## From Bike Lounge with love
 
-BikeAPI lounge is Pleased to provide you with all the predefined API calls in postman requests   so that you don't have to manually enter The URL in the browser In order to test the server. 
-the postman requests are organized into several  collections. the public  links for each collection is provided below.
+BikeAPI lounge is Pleased to provide you with all the predefined API calls in postman requests   so that you don't have to manually enter The URL in the browser In order to test the server. the postman requests are organized into several  collections. the public  links for each collection is provided below.
 
 ## The light at the end of the tunnel
 
