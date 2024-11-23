@@ -1,3 +1,5 @@
+import mongoose,{Document} from "mongoose";
+
 enum BikeTypes {
     'Mountain',
     'Road',
@@ -5,7 +7,7 @@ enum BikeTypes {
     'Electric'
 }
 
-interface Bike {
+interface Bike extends Document {
     name:string;
     brand:string;
     price:number;
@@ -14,3 +16,5 @@ interface Bike {
     quantity:number;
     inStock:boolean
 }
+
+export default Bike

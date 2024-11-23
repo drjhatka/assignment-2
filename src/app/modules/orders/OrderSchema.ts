@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+import mongoose,{model} from "mongoose";
+import Order from "./OrderInterface";
 
 const orderSchema = new mongoose.Schema({
     email:{type:String, required:true},
@@ -6,3 +7,5 @@ const orderSchema = new mongoose.Schema({
     quantity:{type:Number},
     totalPrice:{type:Number}
 })
+
+export const OrderModel= model<Order>('Order',orderSchema)

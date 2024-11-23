@@ -2,24 +2,20 @@ import { Request, Response } from "express";
 import ZodBikeSchema from "../validators/ZodBikeSchema";
 import { BikeServices } from "./BikeServices";
 import { ZodError } from "zod";
+import { CustomResponse } from "../utilities/CustomResponse";
+import { CustomError } from "../utilities/CustomErrors";
 
-const createBike = async (req: Request, res: Response) => {
+const createBike = async (req: Request,  res: Response) => {
     try {
         const { bike } = req.body     // assuming the object has a bike element which includes the bike object
         ZodBikeSchema.parse(bike) // use validate for joi and parse for zod library.
         //save into database
         const result = await BikeServices.create(bike)
-        res.status(200).json({
-            success: true,
-            message: "Bike Created Successfully",
-            data: result
-        })
+        CustomResponse.fireCustomResponse(res,200,true,'Bike Created Successfully',result)
     } catch (error) {
         if (error instanceof ZodError) {
-            res.send({ errors: error.issues, stackTrace: error.stack })
+            CustomError.fireCustomError(res,400,false,error.issues, error.stack?.toString())
         }
-        console.log(error)
-
     }
 }
 const getABike = async (req: Request, res: Response) => {
@@ -48,7 +44,7 @@ const getAllBikes = async (req: Request, res: Response) => {
         const result = await BikeServices.getAll(req.query.searchTerm as string)
         if (result?.length != 0) { //result is not empty so bike is available
             res.status(200).json({
-                message: "Bike Retrieved Successfully",
+                message: "Bikes Retrieved Successfully",
                 status: true,
                 data: result
             })
