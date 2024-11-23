@@ -82,13 +82,12 @@ We implemented powerful Zod validation library to sanitize the post and get data
 
 A number of middleware were implemented in the server to ensure data cleaning during the life cycle of a post request. For example If there are no data available for the order or bike creation Request the middleware will not allow the post request to go through the next stage and will immediately return a response stating that a request body is required.
 
-## From BikeAPI Lounge with love
+## Predefined POSTMAN Requests for your convenience
 
 BikeAPI lounge is Pleased to provide you with all the predefined API calls in postman requests   so that you don't have to manually enter The URL in the browser In order to test the server. the postman requests are organized into several  collections. the public link for the POSTMAN Workspace is provided below.
 
 [Predefined API calls from POSTMAN](https://www.postman.com/bishawjit12/productrequests)
 
-## The light at the end of the tunnel
+## The Last Mile
 
 We are very eager to expand our server With more API calls In the near future along with standardizing our code base According to the industry conventions. With enough care and nurture our server will expand its functionalities in the near future and eventually bloom into a full fledged api testing platform.
-Till then, all we can do is expect to have patience!
