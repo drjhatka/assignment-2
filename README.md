@@ -4,6 +4,9 @@
 
 Welcome to BikeAPI Lounge.Built with  Express js  And Mongoose this API server provides you with fake Bike API data and order data for testing purpose. There are two categories of data. the first is the product data second is the order data. bike API Lounge provides a number of useful API calls to retrieve and modify  data. Here are the links to the original Jason Data.
 
+[Bike Data Json File] (<https://github.com/drjhatka/assignment-2/blob/main/products.json>)
+[Order Data Json File] (<https://github.com/drjhatka/assignment-2/blob/main/orders.json>)
+
 ## Data Sanitization
 
 Data Sanitization We implemented the powerful Zod validation library to sanitize the post and get data, query and perimeters. If the POST data and GET query and parameter data format is correct the server returns a success message and  the original data is preserved otherwise an error message is transmitted respectively. bad data is no good.
