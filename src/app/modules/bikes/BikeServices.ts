@@ -51,5 +51,5 @@ export const BikeServices = {
     getOne,
     getAll,
     updateOne,
-    deleteOne
+    deleteOne,
 }

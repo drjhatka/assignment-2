@@ -4,7 +4,7 @@ import Bike from "./BikeInterface";
 //create bike schema...
 const bikeSchema = new mongoose.Schema({
     // _id:{
-    //     type:String
+    //     type:mongoose.Schema.ObjectId,
     // },
     name: {
         type: String,

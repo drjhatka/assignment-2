@@ -5,7 +5,7 @@ import { BikeServices } from "../bikes/BikeServices";
 import { CustomResponse } from '../utilities/CustomResponse';
 import { CustomError } from "../utilities/CustomErrors";
 import { OrderServices } from "./OrderServices";
-import Bike from "../bikes/BikeInterface";
+import { OrderModel } from './OrderSchema';
 
 
 const createOrder = async (req: Request, res: Response) => {
@@ -16,43 +16,53 @@ const createOrder = async (req: Request, res: Response) => {
         //fetch bike related to order...
         //console.log(await BikeServices.getOne(order.productId))
         const bike = await BikeServices.getOne(order.productId)
-                //check if the quantity is available for the specified product...
-    if(!bike.inStock){
-        CustomResponse.fireCustomResponse(res, 400, false, 'Bike Out of Stock')
-    }
-    else{
-
-        if (bike.quantity < order.quantity) {
-            CustomResponse.fireCustomResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
-        }
-        else if (order.quantity - bike.quantity === 0) {
-            //console.log(order.quantity-bike.quantity)
-            //set the inStock method to false...
-            bike.inStock = false;
-            bike.quantity=0;
-            await BikeServices.updateOne(order.productId, bike)
-            //create order in the DB
-            const result = await OrderServices.create(order)
-            CustomResponse.fireCustomResponse(res, 200, true, 'Order Created Successfully', result)
+        //check if the quantity is available for the specified product...
+        if (!bike.inStock) {
+            CustomResponse.fireCustomResponse(res, 400, false, 'Bike Out of Stock')
         }
         else {
-            //otherwise store in DB...
-            bike.quantity = bike.quantity - order.quantity;
-            await BikeServices.updateOne(order.productId, bike)
-            console.log(bike)
-            const result = await OrderServices.create(order)
-            CustomResponse.fireCustomResponse(res, 200, true, 'Product Stock Updated', result)
+
+            if (bike.quantity < order.quantity) {
+                CustomResponse.fireCustomResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
+            }
+            else if (order.quantity - bike.quantity === 0) {
+                //console.log(order.quantity-bike.quantity)
+                //set the inStock method to false...
+                bike.inStock = false;
+                bike.quantity = 0;
+                await BikeServices.updateOne(order.productId, bike)
+                //create order in the DB
+                const result = await OrderServices.create(order)
+                CustomResponse.fireCustomResponse(res, 200, true, 'Order Created Successfully', result)
+            }
+            else {
+                //otherwise store in DB...
+                bike.quantity = bike.quantity - order.quantity;
+                await BikeServices.updateOne(order.productId, bike)
+                console.log(bike)
+                const result = await OrderServices.create(order)
+                CustomResponse.fireCustomResponse(res, 200, true, 'Product Stock Updated', result)
+            }
         }
-    }
 
     } catch (error) {
         if (error instanceof ZodError) {
-            CustomError.fireCustomError(res,400,false,error.issues, error.stack?.toString())
+            CustomError.fireCustomError(res, 400, false, error.issues, error.stack?.toString())
         }
         console.log(error)
     }
 }
 
+const calculateRevenue = async(req:Request, res:Response)=>{
+    const revenueTotal= await OrderServices.calculateTotalRevenue();
+    console.log('Revvv',revenueTotal)
+     res.status(200).json({message:"Revenue calculated successfully", status:true, data:{totalRevenue:revenueTotal }})
+}
+
+
+
 export const OrderController = {
     createOrder,
+    calculateRevenue
+    
 }
