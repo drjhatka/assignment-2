@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var BikeTypes;
 (function (BikeTypes) {
     BikeTypes[BikeTypes["Mountain"] = 0] = "Mountain";

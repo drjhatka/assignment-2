@@ -18,7 +18,12 @@ const BikeSchema_1 = require("./BikeSchema");
 //define CRUD operations on the bikes (products) here
 //start with GPUD order...
 const create = (bike) => __awaiter(void 0, void 0, void 0, function* () { return yield BikeSchema_1.BikeModel.create(bike); });
-const getOne = (Id) => __awaiter(void 0, void 0, void 0, function* () { return yield BikeSchema_1.BikeModel.find({ _id: new mongoose_1.default.Types.ObjectId(Id) }); });
+const getOne = (Id) => __awaiter(void 0, void 0, void 0, function* () {
+    const bike = yield BikeSchema_1.BikeModel.findOne({ _id: new mongoose_1.default.Types.ObjectId(Id) });
+    //return new Promise((resolve) => resolve(bike as Bike))
+    console.log("Last ", bike);
+    return bike;
+});
 const getAll = (searchTerm) => __awaiter(void 0, void 0, void 0, function* () {
     // build a search condition...
     let filter = {};
@@ -37,7 +42,7 @@ const updateOne = (productId, updatedDoc) => __awaiter(void 0, void 0, void 0, f
         const result = yield BikeSchema_1.BikeModel.updateOne({ _id: new mongoose_1.default.Types.ObjectId(productId) }, {
             $set: updatedDoc // using bike interface type on updatedDoc doesn't allow extra fields to be added, but still shows a false flag of modified count
         });
-        if ((yield result.modifiedCount) === 1 && result.matchedCount === 1) {
+        if (result.modifiedCount === 1 && result.matchedCount === 1) {
             return true;
         }
         return false;
@@ -47,8 +52,8 @@ const updateOne = (productId, updatedDoc) => __awaiter(void 0, void 0, void 0, f
     }
 });
 const deleteOne = (productId) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = BikeSchema_1.BikeModel.deleteOne({ _id: new mongoose_1.default.Types.ObjectId(productId) });
-    if ((yield result).deletedCount == 1) {
+    const result = yield BikeSchema_1.BikeModel.deleteOne({ _id: new mongoose_1.default.Types.ObjectId(productId) });
+    if (result.deletedCount == 1) {
         return true;
     }
     return false;
@@ -58,5 +63,5 @@ exports.BikeServices = {
     getOne,
     getAll,
     updateOne,
-    deleteOne
+    deleteOne,
 };

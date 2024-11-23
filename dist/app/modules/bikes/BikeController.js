@@ -16,71 +16,59 @@ exports.BikeController = void 0;
 const ZodBikeSchema_1 = __importDefault(require("../validators/ZodBikeSchema"));
 const BikeServices_1 = require("./BikeServices");
 const zod_1 = require("zod");
+const CustomResponse_1 = require("../utilities/CustomResponse");
+const CustomErrors_1 = require("../utilities/CustomErrors");
 const createBike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
         const { bike } = req.body; // assuming the object has a bike element which includes the bike object
         ZodBikeSchema_1.default.parse(bike); // use validate for joi and parse for zod library.
         //save into database
         const result = yield BikeServices_1.BikeServices.create(bike);
-        res.status(200).json({
-            success: true,
-            message: "Bike Created Successfully",
-            data: result
-        });
+        CustomResponse_1.CustomResponse.fireCustomResponse(res, 200, true, 'Bike Created Successfully', result);
     }
     catch (error) {
         if (error instanceof zod_1.ZodError) {
-            res.send({ errors: error.issues, stackTrace: error.stack });
+            CustomErrors_1.CustomError.fireCustomError(res, 400, false, error.issues, (_a = error.stack) === null || _a === void 0 ? void 0 : _a.toString());
         }
-        console.log(error);
     }
 });
 const getABike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.productId;
         const result = yield BikeServices_1.BikeServices.getOne(id);
-        if ((result === null || result === void 0 ? void 0 : result.length) != 0) {
-            res.status(200).json({
-                message: "Bike Retrieved Successfully",
-                status: true,
-                data: result
-            });
+        if (result && 'result.$isValid()') {
+            CustomResponse_1.CustomResponse.fireCustomResponse(res, 200, true, 'Bike Retrieved Successfully', result);
         }
     }
     catch (error) {
-        res.status(404).json({ message: "Bike not available", success: false, error: error });
+        CustomResponse_1.CustomResponse.fireCustomResponse(res, 400, false, 'Bike not available');
+        //res.send({success:false, error:'Bike not Available'})
+        //CustomError.fireCustomError(res,404,false,'Bike not Available',Error.prepareStackTrace?.toString())
     }
 });
 const getAllBikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.query.searchTerm) {
-            res.json({
-                status: false,
-                message: "Search Term is Required!"
-            });
+            CustomResponse_1.CustomResponse.fireCustomResponse(res, 200, true, 'Search Term is Required!');
         }
         const result = yield BikeServices_1.BikeServices.getAll(req.query.searchTerm);
         if ((result === null || result === void 0 ? void 0 : result.length) != 0) { //result is not empty so bike is available
-            res.status(200).json({
-                message: "Bike Retrieved Successfully",
-                status: true,
-                data: result
-            });
+            res.status(200).json({ message: "Bikes Retrieved Successfully", status: true, data: result });
         }
         else { //check if the result returns an empty array...
             res.json({ success: false, message: "Bike(s) not available" });
         }
     }
     catch (error) {
-        console.log(error);
+        res.json({ success: false, message: "Bike(s) not available", error: error });
     }
 });
 const updateABike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(req.body);
         const productId = req.params.productId;
         const modifiedCount = yield BikeServices_1.BikeServices.updateOne(productId, req.body);
-        if (modifiedCount && Object.keys(req.body).length > 0) {
+        if (modifiedCount) {
             res.status(200).json({
                 message: "Bike updated successfully",
                 modified: true,
@@ -88,12 +76,9 @@ const updateABike = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 changedFields: req.body
             });
         }
-        else {
-            res.status(404).json({ message: "Bike not found for update", modified: false });
-        }
     }
     catch (error) {
-        console.log(error);
+        console.log("Error", error);
     }
 });
 const deleteABike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -106,7 +91,7 @@ const deleteABike = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(404).json({ success: false, message: "Unable to Delete Check Product ID Again" });
     }
     catch (error) {
-        console.log(error);
+        res.status(404).json({ success: false, message: "Unable to Delete Check Product ID Again", error: error });
     }
 });
 exports.BikeController = {

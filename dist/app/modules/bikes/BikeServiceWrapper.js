@@ -12,18 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.BikeServiceWrapper = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const config_1 = require("./app/config");
-const app_1 = __importDefault(require("./app"));
-function serverListen() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield mongoose_1.default.connect(config_1.configs.dbURL);
-            app_1.default.listen(config_1.configs.port, () => console.log(`Server is listening on port ${config_1.configs.port}`));
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
-}
-serverListen();
+const BikeSchema_1 = require("./BikeSchema");
+const bikeWrapper = (Id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield BikeSchema_1.BikeModel.find({ _id: new mongoose_1.default.Types.ObjectId(Id) });
+    // Promise.resolve()
+});
+exports.BikeServiceWrapper = {
+    bikeWrapper
+};

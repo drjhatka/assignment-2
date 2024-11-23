@@ -8,7 +8,7 @@ import Bike from './BikeInterface';
 const create = async (bike: Bike) => { return await BikeModel.create(bike) }
 
 const getOne = async (Id: string) => {
-    const bike :Bike= await BikeModel.findOne({ _id: new mongoose.Types.ObjectId(Id) })
+    const bike :Bike|null= await BikeModel.findOne({ _id: new mongoose.Types.ObjectId(Id) })
     //return new Promise((resolve) => resolve(bike as Bike))
     console.log("Last ",bike)
     return bike;

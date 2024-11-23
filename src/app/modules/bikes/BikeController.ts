@@ -24,7 +24,7 @@ const createBike = async (req: Request,  res: Response) => {
 const getABike = async (req: Request, res: Response) => {
     try {
         const id: string = req.params.productId
-        const result:Bike|[] = await BikeServices.getOne(id)
+        const result:Bike|null = await BikeServices.getOne(id)
         if(result && 'result.$isValid()' ){
             CustomResponse.fireCustomResponse(res,200,true,'Bike Retrieved Successfully',result)
 
@@ -64,13 +64,8 @@ const updateABike = async (req: Request, res: Response) => {
                 changedFields: req.body
             })
         }
-        // else {
-        //     res.status(404).json({ message: "Bike not found for update", modified: false })
-        // }
     } catch (error) {
         console.log("Error",error)
-        //res.status(404).json({ message: "Bike not found for update", modified: false })
-
     }
 }
 const deleteABike = async (req: Request, res: Response) => {

@@ -23,49 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BikeModel = void 0;
+exports.OrderModel = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-//create bike schema...
-const bikeSchema = new mongoose_1.default.Schema({
-    // _id:{
-    //     type:mongoose.Schema.ObjectId,
-    // },
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    brand: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    price: {
-        type: Number,
-        required: true,
-        min: [0, 'Price Cannot be negative or zero']
-    },
-    category: {
-        type: String,
-        required: true,
-        enum: ['Mountain', 'Road', 'Hybrid', 'Electric']
-    },
-    description: {
-        type: String,
-        required: true,
-        trim: true,
-        max: [300, 'description cannot be more than 300 characters.']
-    },
-    quantity: {
-        type: Number,
-        required: true,
-        min: 1
-    },
-    inStock: {
-        type: Boolean,
-        required: true,
-        default: true
-    }
-}, { timestamps: true });
-// create and export model from the schema...
-exports.BikeModel = (0, mongoose_1.model)('Bike', bikeSchema);
+const orderSchema = new mongoose_1.default.Schema({
+    email: { type: String, required: true },
+    productId: { type: String },
+    quantity: { type: Number },
+    totalPrice: { type: Number }
+});
+exports.OrderModel = (0, mongoose_1.model)('Order', orderSchema);

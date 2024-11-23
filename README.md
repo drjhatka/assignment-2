@@ -10,11 +10,19 @@ Welcome to BikeAPI Lounge.Built with  Express.js  and Mongoose, this API serve
 
 ## API description
 
-the following API calls are available from the back end server Get All Bikes based on category brand or name.
+### [Live Server Link](https://assignmentvercel-one.vercel.app)
+The following API calls are available from the server
 
 ### Get Bikes By Category, Brand or Name
 
 This API call provides You with a collection of bikes   based on category and brand and a single collection If the search query is name parameter.
+
+```http
+
+https://assignmentvercel-one.vercel.app/api/products?searchTerm=CityCycle
+https://assignmentvercel-one.vercel.app/api/products?searchTerm=Mountain
+
+```
 
 ### Get a single bike
 

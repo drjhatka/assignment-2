@@ -9,9 +9,9 @@ const BikeController_1 = require("./BikeController");
 //create express router...
 const router = express_1.default.Router();
 //define bike CRUD routes...
-router.get('/api/products', BikeController_1.BikeController.getAllBikes);
-router.get('/api/products/:productId', BikeController_1.BikeController.getABike);
-router.post('/api/products', BikeController_1.BikeController.createBike);
-router.put('/api/products/:productId', BikeController_1.BikeController.updateABike);
-router.delete('/api/products/:productId', BikeController_1.BikeController.deleteABike);
+router.get('/products', BikeController_1.BikeController.getAllBikes);
+router.get('/products/:productId', BikeController_1.BikeController.getABike);
+router.post('/products', BikeController_1.BikeController.createBike);
+router.put('/products/:productId', BikeController_1.BikeController.updateABike);
+router.delete('/products/:productId', BikeController_1.BikeController.deleteABike);
 exports.BikeRoutes = { router };
