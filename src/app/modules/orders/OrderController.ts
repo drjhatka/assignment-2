@@ -5,7 +5,6 @@ import { BikeServices } from "../bikes/BikeServices";
 import { CustomResponse } from '../utilities/CustomResponse';
 import { CustomError } from "../utilities/CustomErrors";
 import { OrderServices } from "./OrderServices";
-import { OrderModel } from './OrderSchema';
 
 
 const createOrder = async (req: Request, res: Response) => {
@@ -55,10 +54,8 @@ const createOrder = async (req: Request, res: Response) => {
 
 const calculateRevenue = async(req:Request, res:Response)=>{
     const revenueTotal= await OrderServices.calculateTotalRevenue();
-    console.log('Revvv',revenueTotal)
      res.status(200).json({message:"Revenue calculated successfully", status:true, data:{totalRevenue:revenueTotal }})
 }
-
 
 
 export const OrderController = {
