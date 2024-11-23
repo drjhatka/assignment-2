@@ -4,6 +4,8 @@ import { BikeServices } from "./BikeServices";
 import { ZodError } from "zod";
 import { CustomResponse } from "../utilities/CustomResponse";
 import { CustomError } from "../utilities/CustomErrors";
+import { BikeModel } from "./BikeSchema";
+import Bike from "./BikeInterface";
 
 const createBike = async (req: Request,  res: Response) => {
     try {
@@ -22,38 +24,27 @@ const getABike = async (req: Request, res: Response) => {
     try {
         const id: string = req.params.productId
         const result = await BikeServices.getOne(id)
-        if (result?.length != 0) {
-            res.status(200).json({
-                message: "Bike Retrieved Successfully",
-                status: true,
-                data: result
-            })
+        if(result && result instanceof BikeModel){
+            CustomResponse.fireCustomResponse(res,200,true,'Bike Retrieved Successfully',result)
         }
     } catch (error) {
-        res.status(404).json({ message: "Bike not available", success: false, error: error })
+        CustomError.fireCustomError(res,404,false,'Bike not Available',Error.prepareStackTrace?.toString())
     }
 }
 const getAllBikes = async (req: Request, res: Response) => {
     try {
         if (!req.query.searchTerm) {
-            res.json({
-                status: false,
-                message: "Search Term is Required!"
-            })
+            CustomResponse.fireCustomResponse(res,200,true,'Search Term is Required!')
         }
         const result = await BikeServices.getAll(req.query.searchTerm as string)
         if (result?.length != 0) { //result is not empty so bike is available
-            res.status(200).json({
-                message: "Bikes Retrieved Successfully",
-                status: true,
-                data: result
-            })
+            res.status(200).json({message: "Bikes Retrieved Successfully",status: true,data: result})
         }
         else { //check if the result returns an empty array...
             res.json({ success: false, message: "Bike(s) not available" })
         }
     } catch (error) {
-        console.log(error)
+        res.json({ success: false, message: "Bike(s) not available", error:error }) 
     }
 }
 const updateABike = async (req: Request, res: Response) => {
@@ -61,7 +52,7 @@ const updateABike = async (req: Request, res: Response) => {
         console.log(req.body)
         const productId: string = req.params.productId
         const modifiedCount = await BikeServices.updateOne(productId, req.body)
-        if (modifiedCount && Object.keys(req.body).length > 0) {
+        if (modifiedCount) {
             res.status(200).json({
                 message: "Bike updated successfully",
                 modified: true,
@@ -69,11 +60,13 @@ const updateABike = async (req: Request, res: Response) => {
                 changedFields: req.body
             })
         }
-        else {
-            res.status(404).json({ message: "Bike not found for update", modified: false })
-        }
+        // else {
+        //     res.status(404).json({ message: "Bike not found for update", modified: false })
+        // }
     } catch (error) {
-        console.log(error)
+        console.log("Error",error)
+        //res.status(404).json({ message: "Bike not found for update", modified: false })
+
     }
 }
 const deleteABike = async (req: Request, res: Response) => {
@@ -86,7 +79,7 @@ const deleteABike = async (req: Request, res: Response) => {
         res.status(404).json({ success: false, message: "Unable to Delete Check Product ID Again" })
 
     } catch (error) {
-        console.log(error)
+        res.status(404).json({ success: false, message: "Unable to Delete Check Product ID Again", error:error })
     }
 }
 

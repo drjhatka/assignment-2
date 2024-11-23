@@ -37,8 +37,8 @@ const updateOne = async (productId: string, updatedDoc: Bike) => {
     }
 }
 const deleteOne = async (productId: string) => {
-    const result = BikeModel.deleteOne({ _id: new mongoose.Types.ObjectId(productId) })
-    if ((await result).deletedCount == 1) {
+    const result =await  BikeModel.deleteOne({ _id: new mongoose.Types.ObjectId(productId) })
+    if (result.deletedCount == 1) {
         return true
     }
     return false

@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { ZodError } from "zod";
 import ZodOrderSchema from "../validators/ZodOrderSchema";
-import { fireCustomBikeResponse } from "../utilities/CustomResponse";
 import { BikeServices } from "../bikes/BikeServices";
+import { CustomResponse } from '../utilities/CustomResponse';
+import { CustomError } from "../utilities/CustomErrors";
 
 
 const createOrder = async (req: Request, res: Response) => {
@@ -14,21 +15,23 @@ const createOrder = async (req: Request, res: Response) => {
         const bike = await BikeServices.getOne(order.productId)
         //check if the quantity is available for the specified product...
         if (bike.quantity < order.quantity && (order.quantity - bike.quantity) != 0) {
-            fireCustomBikeResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
+            CustomResponse.fireCustomResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
         }
         //set the inStock method to false...
         else if ((order.quantity - bike.quantity) == 0) {
             bike.inStock = false;
+            BikeServices.updateOne('bike._id', bike)
+            CustomResponse.fireCustomResponse(res, 200, true, 'Order Created Successfully', order)
         }
         else {
             //otherwise store in DB...
             bike.quantity = bike.quantity - order.quantity;
             BikeServices.updateOne('bike._id', bike)
-            fireCustomBikeResponse(res, 200, false, 'Stock Updated', bike)
+            CustomResponse.fireCustomResponse(res, 200, false, 'Product Stock Updated', order)
         }
     } catch (error) {
         if (error instanceof ZodError) {
-            res.send({ errors: error.issues, stackTrace: error.stack })
+            CustomError.fireCustomError(res,400,false,error.issues, error.stack?.toString())
         }
         console.log(error)
     }
