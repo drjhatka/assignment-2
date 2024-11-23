@@ -27,11 +27,40 @@ https://assignmentvercel-one.vercel.app/api/products?searchTerm=Mountain
 
 ### Get a single bike
 
-This API call requires The ID of the product as parameter and returns a single bike data . 
+This API call requires The ID of the product as parameter and returns a single bike data .
+
+```http
+https://assignmentvercel-one.vercel.app/api/products/673fec437bd216ac4e1b8085
+```
 
 ### Create a bike
 
 This API call creates a bike in the database. This is a post request so the request document Is required . If the document body is empty this API call returns an error message And the created document If the post operation was successful.
+
+```http
+https://assignmentvercel-one.vercel.app/api/products
+```
+
+POST BODY
+
+```json
+{
+  "bike": 
+    {
+      "name": "NEw TB101",
+      "brand": "TrailBlaze",
+      "price": 1599,
+      "category": "Mountain",
+      "description": "High-performance mountain bike built for extreme trails.",
+      "quantity": 12,
+      "inStock": true,
+      "createdAt": "2024-11-22T02:28:19.541+00:00",
+      "updatedAt": "2024-11-22T02:28:19.541+00:00"
+    }
+  
+}
+
+```
 
 ### Update a Bike's properties
 

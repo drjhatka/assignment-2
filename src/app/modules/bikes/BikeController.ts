@@ -4,9 +4,7 @@ import { BikeServices } from "./BikeServices";
 import { ZodError } from "zod";
 import { CustomResponse } from "../utilities/CustomResponse";
 import { CustomError } from "../utilities/CustomErrors";
-import { BikeModel } from "./BikeSchema";
 import Bike from "./BikeInterface";
-import { array } from "joi";
 
 const createBike = async (req: Request,  res: Response) => {
     try {
@@ -27,11 +25,9 @@ const getABike = async (req: Request, res: Response) => {
         const result:Bike|null = await BikeServices.getOne(id)
         if(result && 'result.$isValid()' ){
             CustomResponse.fireCustomResponse(res,200,true,'Bike Retrieved Successfully',result)
-
         }
     } catch (error) {
         CustomResponse.fireCustomResponse(res,400,false,'Bike not available')
-
         //res.send({success:false, error:'Bike not Available'})
         //CustomError.fireCustomError(res,404,false,'Bike not Available',Error.prepareStackTrace?.toString())
     }
@@ -49,7 +45,7 @@ const getAllBikes = async (req: Request, res: Response) => {
             res.json({ success: false, message: "Bike(s) not available" })
         }
     } catch (error) {
-        res.json({ success: false, message: "Bike(s) not available", error:error }) 
+        //res.json({ success: false, message: "Bike(s) not available", error:error }) 
     }
 }
 const updateABike = async (req: Request, res: Response) => {

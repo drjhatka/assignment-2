@@ -10,11 +10,11 @@ const create = async (bike: Bike) => { return await BikeModel.create(bike) }
 const getOne = async (Id: string) => {
     const bike :Bike|null= await BikeModel.findOne({ _id: new mongoose.Types.ObjectId(Id) })
     //return new Promise((resolve) => resolve(bike as Bike))
-    console.log("Last ",bike)
     return bike;
 }
 
 const getAll = async (searchTerm: string) => {
+   
     // build a search condition...
     let filter = {};
     let result = null;
