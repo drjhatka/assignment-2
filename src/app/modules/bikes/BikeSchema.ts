@@ -1,4 +1,5 @@
 import mongoose, { model } from "mongoose";
+import Bike from "./BikeInterface";
 
 //create bike schema...
 const bikeSchema = new mongoose.Schema({

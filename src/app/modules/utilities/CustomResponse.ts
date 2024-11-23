@@ -4,7 +4,7 @@ import Bike from "../bikes/BikeInterface"
 
 
 const fireCustomResponse=(res:Response,httpCode:number, success:boolean, message:string, data?:Bike|Order)=>{
-    res.status(httpCode).json({success,message, data })
+    return res.status(httpCode).json({success,message, data })
 }
 
 export const CustomResponse ={fireCustomResponse}

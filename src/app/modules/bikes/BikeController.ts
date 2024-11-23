@@ -6,6 +6,7 @@ import { CustomResponse } from "../utilities/CustomResponse";
 import { CustomError } from "../utilities/CustomErrors";
 import { BikeModel } from "./BikeSchema";
 import Bike from "./BikeInterface";
+import { array } from "joi";
 
 const createBike = async (req: Request,  res: Response) => {
     try {
@@ -23,12 +24,16 @@ const createBike = async (req: Request,  res: Response) => {
 const getABike = async (req: Request, res: Response) => {
     try {
         const id: string = req.params.productId
-        const result = await BikeServices.getOne(id)
-        if(result && result instanceof BikeModel){
+        const result:Bike|[] = await BikeServices.getOne(id)
+        if(result && 'result.$isValid()' ){
             CustomResponse.fireCustomResponse(res,200,true,'Bike Retrieved Successfully',result)
+
         }
     } catch (error) {
-        CustomError.fireCustomError(res,404,false,'Bike not Available',Error.prepareStackTrace?.toString())
+        CustomResponse.fireCustomResponse(res,400,false,'Bike not available')
+
+        //res.send({success:false, error:'Bike not Available'})
+        //CustomError.fireCustomError(res,404,false,'Bike not Available',Error.prepareStackTrace?.toString())
     }
 }
 const getAllBikes = async (req: Request, res: Response) => {
@@ -49,7 +54,6 @@ const getAllBikes = async (req: Request, res: Response) => {
 }
 const updateABike = async (req: Request, res: Response) => {
     try {
-        console.log(req.body)
         const productId: string = req.params.productId
         const modifiedCount = await BikeServices.updateOne(productId, req.body)
         if (modifiedCount) {
