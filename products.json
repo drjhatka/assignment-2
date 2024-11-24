@@ -1,194 +1,301 @@
-[
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b807c" },
-    "name": "ClimbMaster C5",
-    "brand": "PeakPerformance",
-    "price": 1100,
-    "category": "Mountain",
-    "description": "Expert-level mountain bike with precision gearing.",
-    "quantity": 6,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
+[{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b807e"
   },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b807d" },
-    "name": "Trailblazer 500",
-    "brand": "AdventureWorks",
-    "price": 1299,
-    "category": "Mountain",
-    "description": "Durable mountain bike for rugged adventures.",
-    "quantity": 15,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b807e" },
-    "name": "Speedster X1",
-    "brand": "RoadRider",
-    "price": 899,
-    "category": "Road",
-    "description": "Lightweight road bike designed for speed.",
-    "quantity": 20,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b807f" },
-    "name": "Urban Explorer",
-    "brand": "CityCycle",
-    "price": 750,
-    "category": "Hybrid",
-    "description": "Perfect for commuting and recreational rides.",
-    "quantity": 30,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8080" },
-    "name": "EcoRide E100",
-    "brand": "GreenWheels",
-    "price": 2000,
-    "category": "Electric",
-    "description": "Eco-friendly electric bike with long battery life.",
-    "quantity": 10,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8081" },
-    "name": "Summit Pro",
-    "brand": "MountainMaster",
-    "price": 1400,
-    "category": "Mountain",
-    "description": "Durable mountain bike for extreme adventures.",
-    "quantity": 8,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8082" },
-    "name": "Velocita V200",
-    "brand": "RacePro",
-    "price": 1000,
-    "category": "Road",
-    "description": "Premium road bike for competitive cycling.",
-    "quantity": 12,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8083" },
-    "name": "Explorer X",
-    "brand": "AdventureWorks",
-    "price": 1200,
-    "category": "Hybrid",
-    "description": "Versatile bike suitable for all terrains.",
-    "quantity": 25,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8084" },
-    "name": "Bolt E2",
-    "brand": "ElectroBike",
-    "price": 2400,
-    "category": "Electric",
-    "description": "Powerful electric bike with fast charging.",
-    "quantity": 7,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8085" },
-    "name": "Pathfinder M300",
-    "brand": "TrailTech",
-    "price": 1300,
-    "category": "Mountain",
-    "description": "Reliable mountain bike for rugged trails.",
-    "quantity": 18,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8086" },
-    "name": "Turbo Trekker",
-    "brand": "CityCycle",
-    "price": 1600,
-    "category": "Hybrid",
-    "description": "Reliable hybrid bike for urban commutes.",
-    "quantity": 22,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8087" },
-    "name": "RoadRunner R1",
-    "brand": "SpeedLine",
-    "price": 850,
-    "category": "Road",
-    "description": "Affordable road bike for beginners.",
-    "quantity": 35,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8088" },
-    "name": "EcoBoost E3",
-    "brand": "GreenWheels",
-    "price": 2200,
-    "category": "Electric",
-    "description": "Advanced electric bike with eco-friendly features.",
-    "quantity": 11,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b8089" },
-    "name": "AllRounder 500",
-    "brand": "FlexCycle",
-    "price": 1000,
-    "category": "Hybrid",
-    "description": "A balanced hybrid bike for versatile use.",
-    "quantity": 28,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b808a" },
-    "name": "Hiker Hybrid 300",
-    "brand": "CityCycle",
-    "price": 1100,
-    "category": "Hybrid",
-    "description": "Durable hybrid bike for all-season use.",
-    "quantity": 19,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
-  },
-  {
-    "_id": { "$oid": "673fec437bd216ac4e1b808b" },
-    "name": "ThunderTrail T4",
-    "brand": "AdventureWorks",
-    "price": 1500,
-    "category": "Mountain",
-    "description": "Mountain bike built for extreme conditions.",
-    "quantity": 5,
-    "inStock": true,
-    "createdAt": "2024-11-22T02:28:19.541+00:00",
-    "updatedAt": "2024-11-22T02:28:19.541+00:00"
+  "name": "Speedster X1",
+  "brand": "RoadRider",
+  "price": 899,
+  "category": "Road",
+  "description": "Lightweight road bike designed for speed.",
+  "quantity": 0,
+  "inStock": false,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": {
+    "$date": "2024-11-24T04:05:15.918Z"
   }
-]
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b807f"
+  },
+  "name": "Urban Explorer",
+  "brand": "CityCycle",
+  "price": 750,
+  "category": "Hybrid",
+  "description": "Perfect for commuting and recreational rides.",
+  "quantity": 22,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": {
+    "$date": "2024-11-24T03:30:39.155Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8080"
+  },
+  "name": "EcoRide E100",
+  "brand": "GreenWheels",
+  "price": 2000,
+  "category": "Electric",
+  "description": "Eco-friendly electric bike with long battery life.",
+  "quantity": 10,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8081"
+  },
+  "name": "Summit Pro",
+  "brand": "MountainMaster",
+  "price": 1400,
+  "category": "Mountain",
+  "description": "Durable mountain bike for extreme adventures.",
+  "quantity": 8,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8082"
+  },
+  "name": "Velocita V200",
+  "brand": "RacePro",
+  "price": 1000,
+  "category": "Road",
+  "description": "Premium road bike for competitive cycling.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8083"
+  },
+  "name": "Explorer X",
+  "brand": "AdventureWorks",
+  "price": 1200,
+  "category": "Hybrid",
+  "description": "Versatile bike suitable for all terrains.",
+  "quantity": 25,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8084"
+  },
+  "name": "Bolt E2",
+  "brand": "ElectroBike",
+  "price": 2400,
+  "category": "Electric",
+  "description": "Powerful electric bike with fast charging.",
+  "quantity": 7,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8085"
+  },
+  "name": "Pathfinder M300",
+  "brand": "TrailTech",
+  "price": 1300,
+  "category": "Mountain",
+  "description": "Reliable mountain bike for rugged trails.",
+  "quantity": 6,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": {
+    "$date": "2024-11-23T07:03:01.361Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8086"
+  },
+  "name": "Turbo Trekker",
+  "brand": "CityCycle",
+  "price": 1600,
+  "category": "Hybrid",
+  "description": "Reliable hybrid bike for urban commutes.",
+  "quantity": 22,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8087"
+  },
+  "name": "RoadRunner R1",
+  "brand": "SpeedLine",
+  "price": 850,
+  "category": "Road",
+  "description": "Affordable road bike for beginners.",
+  "quantity": 35,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8088"
+  },
+  "name": "EcoBoost E3",
+  "brand": "GreenWheels",
+  "price": 2200,
+  "category": "Electric",
+  "description": "Advanced electric bike with eco-friendly features.",
+  "quantity": 11,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b8089"
+  },
+  "name": "AllRounder 500",
+  "brand": "FlexCycle",
+  "price": 1000,
+  "category": "Hybrid",
+  "description": "A balanced hybrid bike for versatile use.",
+  "quantity": 28,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": "2024-11-22T02:28:19.541+00:00"
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b808a"
+  },
+  "name": "Changed Bike SO many timesasdasd",
+  "brand": "CityCycle",
+  "price": 1100,
+  "category": "Hybrid",
+  "description": "Durable hybrid bike for all-season use.",
+  "quantity": 19,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": {
+    "$date": "2024-11-24T03:25:43.562Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "673fec437bd216ac4e1b808b"
+  },
+  "name": "ThunderTrail T4",
+  "brand": "AdventureWorks",
+  "price": 1500,
+  "category": "Mountain",
+  "description": "Mountain bike built for extreme conditions.",
+  "quantity": 5,
+  "inStock": true,
+  "createdAt": "2024-11-22T02:28:19.541+00:00",
+  "updatedAt": {
+    "$date": "2024-11-23T04:46:44.150Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67415206687eb2a4b46a6fb2"
+  },
+  "name": "TrailBlaze X900",
+  "brand": "TrailBlaze",
+  "price": 1599,
+  "category": "Mountain",
+  "description": "High-performance mountain bike built for extreme trails.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67415230554ee79da98c87f9"
+  },
+  "name": "TrailBlaze X900",
+  "brand": "TrailBlaze",
+  "price": 1599,
+  "category": "Mountain",
+  "description": "High-performance mountain bike built for extreme trails.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67418b8c005c7d101a38fc0d"
+  },
+  "name": "NEw TB101",
+  "brand": "TrailBlaze",
+  "price": 1599,
+  "category": "Mountain",
+  "description": "High-performance mountain bike built for extreme trails.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67429a8ecfed40f117ec9aef"
+  },
+  "name": "NEw TB101",
+  "brand": "TrailBlaze",
+  "price": 1599,
+  "category": "Mountain",
+  "description": "High-performance mountain bike built for extreme trails.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67429b7a6996def709f81d3f"
+  },
+  "name": "NEWLY ADDED SUPERBIKE",
+  "brand": "Greenwheels",
+  "price": 1599,
+  "category": "Mountain",
+  "description": "High-performance mountain bike built for extreme trails.",
+  "quantity": 12,
+  "inStock": true,
+  "createdAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-11-22T02:28:19.541Z"
+  },
+  "__v": 0
+}]

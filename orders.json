@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "6742a56a94c994102f04fc2f"
+  },
+  "email": "abc@test.com",
+  "productId": "673fec437bd216ac4e1b807e",
+  "quantity": 6,
+  "totalPrice": 2598,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6742a5af4d61b8f2c86bcc5b"
+  },
+  "email": "abc@test.com",
+  "productId": "673fec437bd216ac4e1b807e",
+  "quantity": 6,
+  "totalPrice": 2598,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6742a5d44d61b8f2c86bcc5f"
+  },
+  "email": "abc@test.com",
+  "productId": "673fec437bd216ac4e1b807e",
+  "quantity": 2,
+  "totalPrice": 2598,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6742a5fc4d61b8f2c86bcc64"
+  },
+  "email": "abc@test.com",
+  "productId": "673fec437bd216ac4e1b807e",
+  "quantity": 6,
+  "totalPrice": 2598,
+  "__v": 0
+}]
