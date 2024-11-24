@@ -18,7 +18,7 @@ The following API calls are available from the server
 
 This API call provides You with a collection of bikes   based on category and brand and a single collection if the search query is name parameter.
 
-#### By Name  
+#### Retrieve By Name  
 
 ```http
 
@@ -40,7 +40,7 @@ https://assignmentvercel-one.vercel.app/api/products?searchTerm=Mountain
 https://assignmentvercel-one.vercel.app/api/products?searchTerm=Speedster X1
 
 
-### Get a single bike
+## Get a single bike
 
 This API call requires The ID of the product as parameter and returns a single bike data .
 
