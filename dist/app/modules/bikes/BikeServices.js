@@ -21,7 +21,6 @@ const create = (bike) => __awaiter(void 0, void 0, void 0, function* () { return
 const getOne = (Id) => __awaiter(void 0, void 0, void 0, function* () {
     const bike = yield BikeSchema_1.BikeModel.findOne({ _id: new mongoose_1.default.Types.ObjectId(Id) });
     //return new Promise((resolve) => resolve(bike as Bike))
-    console.log("Last ", bike);
     return bike;
 });
 const getAll = (searchTerm) => __awaiter(void 0, void 0, void 0, function* () {

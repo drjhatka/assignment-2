@@ -61,7 +61,7 @@ const getAllBikes = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
     }
     catch (error) {
-        res.json({ success: false, message: "Bike(s) not available", error: error });
+        //res.json({ success: false, message: "Bike(s) not available", error:error }) 
     }
 });
 const updateABike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -75,6 +75,9 @@ const updateABike = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 data: yield BikeServices_1.BikeServices.getOne(productId),
                 changedFields: req.body
             });
+        }
+        else {
+            CustomErrors_1.CustomError.fireCustomError(res, 404, false, 'BIke was not updated', 'Invalid body request');
         }
     }
     catch (error) {

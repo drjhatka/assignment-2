@@ -15,10 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderController = void 0;
 const zod_1 = require("zod");
 const ZodOrderSchema_1 = __importDefault(require("../validators/ZodOrderSchema"));
-const BikeServices_1 = require("../bikes/BikeServices");
 const CustomResponse_1 = require("../utilities/CustomResponse");
 const CustomErrors_1 = require("../utilities/CustomErrors");
 const OrderServices_1 = require("./OrderServices");
+const BikeSchema_1 = require("../bikes/BikeSchema");
+const mongoose_1 = __importDefault(require("mongoose"));
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -27,7 +28,8 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         ZodOrderSchema_1.default.parse(order); // use validate for joi and parse for zod library.
         //fetch bike related to order...
         //console.log(await BikeServices.getOne(order.productId))
-        const bike = yield BikeServices_1.BikeServices.getOne(order.productId);
+        console.log(order.productId);
+        const bike = yield BikeSchema_1.BikeModel.findOne({ _id: new mongoose_1.default.Types.ObjectId(order.productId) });
         //check if the quantity is available for the specified product...
         if (!bike.inStock) {
             CustomResponse_1.CustomResponse.fireCustomResponse(res, 400, false, 'Bike Out of Stock');
@@ -41,7 +43,8 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 //set the inStock method to false...
                 bike.inStock = false;
                 bike.quantity = 0;
-                yield BikeServices_1.BikeServices.updateOne(order.productId, bike);
+                yield BikeSchema_1.BikeModel.updateOne({ _id: new mongoose_1.default.Types.ObjectId(order.productId) }, bike);
+                //await BikeServices.updateOne(order.productId, bike!)
                 //create order in the DB
                 const result = yield OrderServices_1.OrderServices.create(order);
                 CustomResponse_1.CustomResponse.fireCustomResponse(res, 200, true, 'Order Created Successfully', result);
@@ -49,8 +52,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             else {
                 //otherwise store in DB...
                 bike.quantity = bike.quantity - order.quantity;
-                yield BikeServices_1.BikeServices.updateOne(order.productId, bike);
-                console.log(bike);
+                yield BikeSchema_1.BikeModel.updateOne({ _id: new mongoose_1.default.Types.ObjectId(order.productId) }, bike);
                 const result = yield OrderServices_1.OrderServices.create(order);
                 CustomResponse_1.CustomResponse.fireCustomResponse(res, 200, true, 'Product Stock Updated', result);
             }

@@ -1,11 +1,9 @@
 import { Request, Response } from "express";
 import { ZodError } from "zod";
 import ZodOrderSchema from "../validators/ZodOrderSchema";
-import { BikeServices } from "../bikes/BikeServices";
 import { CustomResponse } from '../utilities/CustomResponse';
 import { CustomError } from "../utilities/CustomErrors";
 import { OrderServices } from "./OrderServices";
-import Bike from "../bikes/BikeInterface";
 import { BikeModel } from "../bikes/BikeSchema";
 import mongoose from "mongoose";
 
@@ -28,7 +26,7 @@ const createOrder = async (req: Request, res: Response) => {
             if (bike!.quantity < order.quantity) {
                 CustomResponse.fireCustomResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
             }
-            
+
             else if (order.quantity - bike!.quantity === 0) {
                 //console.log(order.quantity-bike.quantity)
                 //set the inStock method to false...
