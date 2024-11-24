@@ -124,7 +124,7 @@ https://assignmentvercel-one.vercel.app/api/orders
 
 BikeAPI lounge is Pleased to provide you with all the predefined API calls in postman requests   so that you don't have to manually enter The URL in the browser in order to test the server. the postman requests are organized into several  collections. the public link for the POSTMAN Workspace is provided below.
 
-[Predefined API Requests from POSTMAN](https://www.postman.com/bishawjit12/requests)
+[Predefined API Requests from POSTMAN](https://www.postman.com/bishawjit12/requests/collection/6szfots/production-requests)
 
 ## Data Sanitization
 
