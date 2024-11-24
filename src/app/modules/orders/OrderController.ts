@@ -6,6 +6,8 @@ import { CustomResponse } from '../utilities/CustomResponse';
 import { CustomError } from "../utilities/CustomErrors";
 import { OrderServices } from "./OrderServices";
 import Bike from "../bikes/BikeInterface";
+import { BikeModel } from "../bikes/BikeSchema";
+import mongoose from "mongoose";
 
 
 const createOrder = async (req: Request, res: Response) => {
@@ -15,7 +17,8 @@ const createOrder = async (req: Request, res: Response) => {
         ZodOrderSchema.parse(order) // use validate for joi and parse for zod library.
         //fetch bike related to order...
         //console.log(await BikeServices.getOne(order.productId))
-        const bike  = await BikeServices.getOne(order.productId)
+        console.log(order.productId)
+        const bike  = await BikeModel.findOne({ _id: new mongoose.Types.ObjectId( order.productId)})
         //check if the quantity is available for the specified product...
         if (!bike!.inStock) {
             CustomResponse.fireCustomResponse(res, 400, false, 'Bike Out of Stock')
@@ -30,7 +33,9 @@ const createOrder = async (req: Request, res: Response) => {
                 //set the inStock method to false...
                 bike!.inStock = false;
                 bike!.quantity = 0;
-                await BikeServices.updateOne(order.productId, bike!)
+                await BikeModel.updateOne({_id: new mongoose.Types.ObjectId(order.productId)},bike!)
+
+                //await BikeServices.updateOne(order.productId, bike!)
                 //create order in the DB
                 const result = await OrderServices.create(order)
                 CustomResponse.fireCustomResponse(res, 200, true, 'Order Created Successfully', result)
@@ -38,8 +43,7 @@ const createOrder = async (req: Request, res: Response) => {
             else {
                 //otherwise store in DB...
                 bike!.quantity = bike!.quantity - order.quantity;
-                await BikeServices.updateOne(order.productId, bike!)
-                console.log(bike)
+                await BikeModel.updateOne({_id: new mongoose.Types.ObjectId(order.productId)},bike!)
                 const result = await OrderServices.create(order)
                 CustomResponse.fireCustomResponse(res, 200, true, 'Product Stock Updated', result)
             }

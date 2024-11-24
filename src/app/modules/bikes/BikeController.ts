@@ -60,6 +60,9 @@ const updateABike = async (req: Request, res: Response) => {
                 changedFields: req.body
             })
         }
+        else{
+            CustomError.fireCustomError(res,404,false,'BIke was not updated','Invalid body request')
+        }
     } catch (error) {
         console.log("Error",error)
     }
