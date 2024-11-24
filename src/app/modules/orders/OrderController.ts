@@ -28,6 +28,7 @@ const createOrder = async (req: Request, res: Response) => {
             if (bike!.quantity < order.quantity) {
                 CustomResponse.fireCustomResponse(res, 400, false, 'Order Quantity cannot be more than currently available stock', order)
             }
+            
             else if (order.quantity - bike!.quantity === 0) {
                 //console.log(order.quantity-bike.quantity)
                 //set the inStock method to false...
