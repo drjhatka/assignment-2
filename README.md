@@ -38,9 +38,9 @@ https://assignmentvercel-one.vercel.app/api/products?searchTerm=Mountain
 
 ```http
 https://assignmentvercel-one.vercel.app/api/products?searchTerm=Speedster X1
+```
 
-
-## Get a single bike
+### Get a single bike
 
 This API call requires The ID of the product as parameter and returns a single bike data .
 
